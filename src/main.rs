@@ -2,6 +2,9 @@ use std::cmp;
 use std::thread;
 use std::time;
 
+fn gather_input_events() {
+}
+
 fn simulation(prev_sim_at: time::Instant, dt: u64) {
     let now = time::Instant::now();
     let mut sims = 0;
@@ -55,6 +58,7 @@ fn main() {
         let realnow = time::Instant::now();
         if realnow > next_simulation_tick_at {
             let x = prev_simulation_tick_at;
+            gather_input_events();
             prev_simulation_tick_at = time::Instant::now();
             simulation(x, tick_rate);
         }
